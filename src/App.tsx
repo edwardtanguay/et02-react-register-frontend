@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import './App.scss';
 import { NavLink, Route, Routes, Navigate } from 'react-router-dom';
 import { PageWelcome } from './pages/PageWelcome';
@@ -10,9 +12,21 @@ import { PageConfirmLink } from './pages/PageConfirmLink';
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 function App() {
+	const [currentUser, setCurrentUser] = useState({});
+
+	useEffect(() => {
+		(async () => {
+			const data = (await axios.get(`${baseUrl}/current-user`)).data;
+			console.log(data);
+			const _currentUser = data.currentUser;
+			setCurrentUser(_currentUser);
+		})();
+	}, []);
+
 	return (
 		<div className="App">
 			<h1>Language Tandem Group</h1>
+			<h1>{currentUser.username}</h1>
 			<nav>
 				<NavLink to="/welcome">Welcome</NavLink>
 				<NavLink to="/members">Members</NavLink>
