@@ -7,6 +7,8 @@ import { PageLogin } from './pages/PageLogin';
 import { PageLogout } from './pages/PageLogout';
 import { PageConfirmLink } from './pages/PageConfirmLink';
 
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
+
 function App() {
 	return (
 		<div className="App">
