@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.scss';
+import { IUser } from './interfaces';
 import { NavLink, Route, Routes, Navigate } from 'react-router-dom';
 import { PageWelcome } from './pages/PageWelcome';
 import { PageMembers } from './pages/PageMembers';
@@ -12,12 +13,16 @@ import { PageConfirmLink } from './pages/PageConfirmLink';
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 function App() {
-	const [currentUser, setCurrentUser] = useState({});
+	const [currentUser, setCurrentUser] = useState<IUser>({
+		username: '',
+		firstName: '',
+		lastName: '',
+		accessGroups: []
+	});
 
 	useEffect(() => {
 		(async () => {
 			const data = (await axios.get(`${baseUrl}/current-user`)).data;
-			console.log(data);
 			const _currentUser = data.currentUser;
 			setCurrentUser(_currentUser);
 		})();
