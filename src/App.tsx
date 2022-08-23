@@ -9,6 +9,7 @@ import { PageRegister } from './pages/PageRegister';
 import { PageLogin } from './pages/PageLogin';
 import { PageLogout } from './pages/PageLogout';
 import { PageConfirmLink } from './pages/PageConfirmLink';
+import { Page404 } from './pages/Page404';
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -44,6 +45,7 @@ function App() {
 			</nav>
 
 			<Routes>
+				<Route  path="*" element={<Page404/>}/>
 				<Route path="/welcome" element={<PageWelcome />} />
 				{currentUser.accessGroups.includes('members') && (
 					<Route path="/members" element={<PageMembers />} />
