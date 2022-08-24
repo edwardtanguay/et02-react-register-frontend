@@ -48,8 +48,12 @@ function App() {
 				{currentUser.accessGroups.includes('members') && (
 					<NavLink to="/members">Members</NavLink>
 				)}
-				<NavLink to="/register">Register</NavLink>
-				<NavLink to="/login">Login</NavLink>
+				{currentUser.accessGroups.includes('loggedOutUsers') && (
+					<NavLink to="/register">Register</NavLink>
+				)}
+				{currentUser.accessGroups.includes('loggedOutUsers') && (
+					<NavLink to="/login">Login</NavLink>
+				)}
 				{currentUser.accessGroups.includes('loggedInUsers') && (
 					<NavLink to="/logout">Logout</NavLink>
 				)}
@@ -61,16 +65,20 @@ function App() {
 				{currentUser.accessGroups.includes('members') && (
 					<Route path="/members" element={<PageMembers />} />
 				)}
-				<Route path="/register" element={<PageRegister />} />
-				<Route
-					path="/login"
-					element={
-						<PageLogin
-							baseUrl={baseUrl}
-							setCurrentUser={setCurrentUser}
-						/>
-					}
-				/>
+				{currentUser.accessGroups.includes('loggedOutUsers') && (
+					<Route path="/register" element={<PageRegister />} />
+				)}
+				{currentUser.accessGroups.includes('loggedOutUsers') && (
+					<Route
+						path="/login"
+						element={
+							<PageLogin
+								baseUrl={baseUrl}
+								setCurrentUser={setCurrentUser}
+							/>
+						}
+					/>
+				)}
 				{currentUser.accessGroups.includes('loggedInUsers') && (
 					<Route path="/logout" element={<PageLogout />} />
 				)}
