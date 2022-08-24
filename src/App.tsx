@@ -80,7 +80,15 @@ function App() {
 					/>
 				)}
 				{currentUser.accessGroups.includes('loggedInUsers') && (
-					<Route path="/logout" element={<PageLogout />} />
+					<Route
+						path="/logout"
+						element={
+							<PageLogout
+								baseUrl={baseUrl}
+								setCurrentUser={setCurrentUser}
+							/>
+						}
+					/>
 				)}
 				<Route path="/confirm-link" element={<PageConfirmLink />} />
 				<Route path="/" element={<Navigate to="/welcome" replace />} />

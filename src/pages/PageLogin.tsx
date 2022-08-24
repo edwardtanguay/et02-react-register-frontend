@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { IUser } from '../interfaces';
+import { useNavigate } from 'react-router-dom';
 
 interface IPageLoginProps {
 	baseUrl: string;
@@ -12,6 +13,8 @@ export const PageLogin = (props: IPageLoginProps) => {
 	const [password, setPassword] = useState('');
 
 	const { baseUrl, setCurrentUser } = props;
+
+	const navigate = useNavigate();
 
 	const handleLoginButton = (e: React.MouseEvent<HTMLElement>) => {
 		e.preventDefault();
@@ -28,7 +31,7 @@ export const PageLogin = (props: IPageLoginProps) => {
 				console.log('bad login');
 			} else {
 				setCurrentUser(data.currentUser);
-				console.log(_currentUser);
+				navigate('/members');
 			}
 		})();
 	};
