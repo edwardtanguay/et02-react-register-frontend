@@ -51,7 +51,7 @@ function App() {
 					<Route path="/members" element={<PageMembers />} />
 				)}
 				<Route path="/register" element={<PageRegister />} />
-				<Route path="/login" element={<PageLogin />} />
+				<Route path="/login" element={<PageLogin baseUrl={baseUrl} />} />
 				{currentUser.accessGroups.includes('loggedInUsers') && (
 					<Route path="/logout" element={<PageLogout />} />
 				)}
