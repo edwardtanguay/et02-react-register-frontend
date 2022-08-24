@@ -30,6 +30,17 @@ body {
 		}
 	}
 
+	div.userFullName {
+		padding-top: .5rem;
+
+		span {
+			background-color: rgb(173, 119, 52);
+			color: black;
+			padding: .1rem .5rem;
+			font-weight: bold;
+		}
+	}
+
 	.page404 {
 		color: #333;
 
