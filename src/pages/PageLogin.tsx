@@ -57,7 +57,7 @@ export const PageLogin = (props: IPageLoginProps) => {
 						<input
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
-							type="text"
+							type="password"
 						/>
 					</div>
 				</div>
