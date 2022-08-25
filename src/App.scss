@@ -81,7 +81,11 @@ body {
 
 			.buttonRow {
 				display: flex;
-				justify-content: right;
+				justify-content: space-between;
+
+				.formMessage {
+					color: orange;
+				}
 			}
 		}
 	}

@@ -9,6 +9,7 @@ interface IPageLoginProps {
 }
 
 export const PageLogin = (props: IPageLoginProps) => {
+	const [formMessage, setFormMessage] = useState('');
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 
@@ -22,13 +23,13 @@ export const PageLogin = (props: IPageLoginProps) => {
 			const data = (
 				await axios.post(
 					`${baseUrl}/login`,
-					{ username },
+					{ username, password },
 					{ withCredentials: true }
 				)
 			).data;
 			const _currentUser = data.currentUser;
 			if (_currentUser.username === 'anonymousUser') {
-				console.log('bad login');
+				setFormMessage('bad login');
 			} else {
 				setCurrentUser(data.currentUser);
 				navigate('/members');
@@ -44,6 +45,7 @@ export const PageLogin = (props: IPageLoginProps) => {
 					<div>
 						<input
 							value={username}
+							autoFocus
 							onChange={(e) => setUsername(e.target.value)}
 							type="text"
 						/>
@@ -60,6 +62,7 @@ export const PageLogin = (props: IPageLoginProps) => {
 					</div>
 				</div>
 				<div className="buttonRow">
+					<div className="formMessage">{formMessage}</div>
 					<button onClick={handleLoginButton}>Login</button>
 				</div>
 			</fieldset>
