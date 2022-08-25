@@ -68,7 +68,7 @@ function App() {
 				{currentUser.accessGroups.includes('loggedOutUsers') && (
 					<Route path="/register" element={<PageRegister />} />
 				)}
-				{currentUser.accessGroups.includes('loggedOutUsers') && (
+				{/* {currentUser.accessGroups.includes('loggedOutUsers') && ( */}
 					<Route
 						path="/login"
 						element={
@@ -78,7 +78,7 @@ function App() {
 							/>
 						}
 					/>
-				)}
+				{/* )} */}
 				{currentUser.accessGroups.includes('loggedInUsers') && (
 					<Route
 						path="/logout"
